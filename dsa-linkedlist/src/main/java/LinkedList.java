@@ -186,6 +186,10 @@ public class LinkedList<T> {
         node.next = newNode;
     }
 
+    /**
+     * 尾部添加新节点
+     * @param t
+     */
     private void linkLast(T t) {
         //1. 创建新节点
         Node newNode = new Node(t, null);
@@ -201,7 +205,87 @@ public class LinkedList<T> {
         }
     }
 
+    /**
+     * 回文判断
+     * @return
+     */
+    public boolean palindrome() {
+        boolean flag = false;
+        //1. 边界条件判断
+        if (head == null) {
+            return false;
+        }
+        //2. 判断是否回文
+        //2.1 查找中间节点
+        Node p = head;
+        Node q = head;
+        while (p.next != null && q.next.next != null) {
+            p = p.next; //p走一个步长
+            q = q.next.next; //q走两个步长
+        }
+        Node left = null;
+        Node right = null;
+        if (q.next == null) { //链表总节点数目为奇数，p 一定是中间节点
+            right = p.next;
+            left = inverse(p).next;
+        } else { //链表总节点数目为偶数，p 不是唯一的中间节点，这时候中间节点有两个
+            right = p.next;
+            left = inverse(p);
+        }
+        //回文比较核心代码
+        compareLF(left, right);
+        return flag;
+    }
 
+    /**
+     * 回文判断-辅助方法
+     * 比较两个链表的节点对应位置是否相同
+     * @param left
+     * @param right
+     * @return
+     */
+    private boolean compareLF(Node left, Node right) {
+        Node p = left;
+        Node q = right;
+        while (p!=null && q!=null) {
+            if (p.data == q.data) {
+                p = p.next;
+                q = q.next;
+                continue;
+            } else {
+                break;
+            }
+        }
+        if (p != null || q != null) {
+            return false;
+        }
+        return true;
+    }
+    /**
+     * 链表反转-无节点
+     */
+    public Node inverse(Node p) {
+        //pre反转链表初始节点
+        Node pre = null;
+        Node e = head;
+        Node next = null;
+        while (e != p) {
+            // 为了向前移动e，保留e.next
+            next = e.next;
+            // 核心操作：调整当前节点的next后继指针
+            e.next = pre;
+            pre = e ;
+            // 往前移动e
+            e = next;
+        }
+        e.next = pre;
+        return e; //返回从中间节点开始，完成反转的链表开始节点
+    }
+
+    /**
+     * 节点
+     * @param <T>
+     */
     public static class Node<T> {
         private T data;
         private Node next;

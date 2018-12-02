@@ -5,12 +5,8 @@ import java.util.Arrays;
 import java.util.stream.IntStream;
 
 /**
- * Package: houzm.accumulation.array
  * Author: hzm_dream@163.com
  * Date: Created in 2018/11/15 18:25
- * Copyright: Copyright (c) 2018
- * Version: 0.0.1
- * Modified By:
  * Description： generic array resizeGrow
  */
 public class ArrayGenericResize<T> {
@@ -29,6 +25,12 @@ public class ArrayGenericResize<T> {
         array = (T[]) new Object[DEFUALT_CAPACITY];
     }
 
+    /**
+     * 查找
+     *
+     * @param index
+     * @return
+     */
     public T find(int index) {
         if (index < 0 || index > currentSize) {
             System.out.println(" index illegal ");
@@ -37,6 +39,12 @@ public class ArrayGenericResize<T> {
         return array[index];
     }
 
+    /**
+     * 添加
+     *
+     * @param value
+     * @return
+     */
     public boolean add(T value) {
         if (currentSize == 0) {
             array[0] = value;
@@ -45,6 +53,13 @@ public class ArrayGenericResize<T> {
         return insert(currentSize - 1, value);
     }
 
+    /**
+     * 插入
+     *
+     * @param index
+     * @param value
+     * @return
+     */
     public boolean insert(int index, T value) {
         //1. 非法参数
         if (index < 0 || index > currentSize) {
@@ -73,6 +88,11 @@ public class ArrayGenericResize<T> {
         return true;
     }
 
+    /**
+     * 扩容
+     *
+     * @param minCapacity
+     */
     private void resizeGrow(int minCapacity) {
         if (minCapacity < 0) {
             throw new IllegalStateException(" capacity illegal ");
@@ -94,6 +114,11 @@ public class ArrayGenericResize<T> {
         array = newarray;
     }
 
+    /**
+     * 缩容
+     *
+     * @param minCapacity
+     */
     private void resizeReduce(int minCapacity) {
         if (minCapacity < 0) {
             throw new IllegalStateException(" capacity illegal ");
@@ -135,7 +160,7 @@ public class ArrayGenericResize<T> {
         array[currentSize - 1] = null;
         --currentSize;
         //缩容
-        resizeReduce(array.length>>1);
+        resizeReduce(array.length >> 1);
         return temp;
 
     }

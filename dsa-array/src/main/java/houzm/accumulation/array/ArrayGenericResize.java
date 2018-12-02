@@ -94,8 +94,11 @@ public class ArrayGenericResize<T> {
      * @param minCapacity
      */
     private void resizeGrow(int minCapacity) {
-        if (minCapacity < 0) {
-            throw new IllegalStateException(" capacity illegal ");
+//        if (minCapacity < 0) {
+//            throw new IllegalStateException(" capacity illegal ");
+//        }
+        if (minCapacity < DEFUALT_CAPACITY) {
+            minCapacity = DEFUALT_CAPACITY;
         }
         int oldCapacity = array.length;
         int newCapacity = oldCapacity + oldCapacity >> 1; //1.5
@@ -103,7 +106,7 @@ public class ArrayGenericResize<T> {
             newCapacity = minCapacity;
         }
         if (newCapacity - MAX_ARRAY_SIZE > 0) {
-            if (newCapacity > MAX_ARRAY_SIZE) {
+            if (minCapacity > MAX_ARRAY_SIZE) {
                 newCapacity = Integer.MAX_VALUE;
             } else {
                 newCapacity = MAX_ARRAY_SIZE;

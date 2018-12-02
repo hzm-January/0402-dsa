@@ -12,24 +12,22 @@ public class SequenceStackDynamicAllocationDeep<T> {
     //栈
     private T[] stack;
     // 栈的深度
-    private Integer deep;
+//    private Integer deep;
     // 栈中元素个数
     private int size;
     // 默认栈的深度
-    private static final Integer DEFUALT_LENGTH = 16;
+    private static final Integer DEFUALT_STACK_DEEP = 16;
     // 最深栈深度
     private static final Integer MAX_STACK_DEEP = Integer.MAX_VALUE-8;
 
     public SequenceStackDynamicAllocationDeep() {
-        this.deep = DEFUALT_LENGTH;
         this.size = 0; //方便理解，可省略
-        stack = (T[]) new Object[deep];
+        stack = (T[]) new Object[DEFUALT_STACK_DEEP];
     }
 
     public SequenceStackDynamicAllocationDeep(int initialCapacity) {
-        this.deep = initialCapacity;
         this.size = 0; //方便理解，可省略
-        stack = (T[]) new Object[deep];
+        stack = (T[]) new Object[initialCapacity];
     }
 
     /**
@@ -40,12 +38,11 @@ public class SequenceStackDynamicAllocationDeep<T> {
      */
     public boolean push(T t) {
         //1. 栈满校验
-        if (size == deep) {
-            resizeGrow(deep + deep >> 1);
+        if (size == stack.length) {
+            resizeGrow(size+1);
         }
         //2. 压栈
-        stack[size] = t;
-        ++size;
+        stack[size++] = t;
         return true;
     }
 
@@ -62,16 +59,22 @@ public class SequenceStackDynamicAllocationDeep<T> {
         //2. 取出value
         T popValue = stack[size - 1];
         --size;
-        resizeReduce(deep>>1); //0.5
+        resizeReduce(stack.length>>1); //0.5
         return popValue;
     }
 
+    public static void main(String[] args) {
+        System.out.println(1>>1);
+    }
     /**
      * 扩容
      */
     private void resizeGrow(int minCapacity) {
-        if (minCapacity < 0) {
-            throw new IllegalStateException(" capacity illegal ");
+//        if (minCapacity < 0) {
+//            throw new IllegalStateException(" capacity illegal ");
+//        }
+        if (minCapacity < DEFUALT_STACK_DEEP) {
+            minCapacity = DEFUALT_STACK_DEEP;
         }
         int oldCapacity = stack.length;
         int newCapacity = oldCapacity + oldCapacity >> 1; //1.5
@@ -79,7 +82,7 @@ public class SequenceStackDynamicAllocationDeep<T> {
             newCapacity = minCapacity;
         }
         if (newCapacity - MAX_STACK_DEEP > 0) {
-            if (newCapacity > MAX_STACK_DEEP) {
+            if (minCapacity > MAX_STACK_DEEP) {
                 newCapacity = Integer.MAX_VALUE;
             } else {
                 newCapacity = MAX_STACK_DEEP;
@@ -108,5 +111,19 @@ public class SequenceStackDynamicAllocationDeep<T> {
         }
     }
 
+    /**
+     * 获取当前栈中实际元素个数
+     * @return
+     */
+    public int getSize() {
+        return size;
+    }
+
+    /**
+     * 清空栈
+     */
+    public void clear() {
+        size = 0;
+    }
 
 }

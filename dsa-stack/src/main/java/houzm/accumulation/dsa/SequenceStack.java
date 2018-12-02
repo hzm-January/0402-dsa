@@ -13,22 +13,20 @@ public class SequenceStack<T> {
     //栈
     private T[] stack;
     // 栈的深度
-    private Integer deep;
-    // 栈顶索引
-    private int topIndex;
+//    private Integer deep;
+    // 栈中实际元素个数
+    private int size;
     // 默认栈的深度
     private static final Integer DEFUALT_LENGTH = 16;
 
     public SequenceStack() {
-        this.deep = DEFUALT_LENGTH;
-        this.topIndex = 0; //方便理解，可省略
-        stack = (T[]) new Object[deep];
+        this.size = 0; //方便理解，可省略
+        stack = (T[]) new Object[DEFUALT_LENGTH];
     }
 
     public SequenceStack(int initialCapacity) {
-        this.deep = initialCapacity;
-        this.topIndex = 0; //方便理解，可省略
-        stack = (T[]) new Object[deep];
+        this.size = 0; //方便理解，可省略
+        stack = (T[]) new Object[initialCapacity];
     }
 
     /**
@@ -38,12 +36,12 @@ public class SequenceStack<T> {
      */
     public boolean push(T t) {
         //1. 栈满校验
-        if (topIndex == deep) {
+        if (size == stack.length) {
             throw new IllegalStateException(" stack overflow ");
         }
         //2. 压栈
-        stack[topIndex] = t;
-        ++topIndex;
+        stack[size] = t;
+        ++size;
         return true;
     }
 
@@ -53,12 +51,12 @@ public class SequenceStack<T> {
      */
     public T pop() {
         //1. 栈空校验
-        if (topIndex == 0) {
+        if (size == 0) {
             throw new IllegalStateException(" stack is empty ");
         }
         //2. 取出value
-        T popValue = stack[topIndex - 1];
-        --topIndex;
+        T popValue = stack[size - 1];
+        --size;
         return popValue;
     }
 

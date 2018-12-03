@@ -40,8 +40,7 @@ public class SequenceStack<T> {
             throw new IllegalStateException(" stack overflow ");
         }
         //2. 压栈
-        stack[size] = t;
-        ++size;
+        stack[size++] = t;
         return true;
     }
 
@@ -55,8 +54,7 @@ public class SequenceStack<T> {
             throw new IllegalStateException(" stack is empty ");
         }
         //2. 取出value
-        T popValue = stack[size - 1];
-        --size;
+        T popValue = stack[--size];
         return popValue;
     }
 

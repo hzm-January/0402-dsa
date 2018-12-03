@@ -57,8 +57,7 @@ public class SequenceStackDynamicAllocationDeep<T> {
             throw new IllegalStateException(" stack is empty ");
         }
         //2. 取出value
-        T popValue = stack[size - 1];
-        --size;
+        T popValue = stack[--size];
         resizeReduce(stack.length>>1); //0.5
         return popValue;
     }

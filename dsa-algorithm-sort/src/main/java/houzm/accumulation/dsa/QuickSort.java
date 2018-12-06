@@ -60,6 +60,7 @@ public class QuickSort {
 
     /**
      * 寻找分区点并分区处理
+     * 顺序： 从小到大
      * @param arr
      * @param start
      * @param end

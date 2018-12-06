@@ -9,6 +9,8 @@ import java.util.Arrays;
  * <p>
  * 描述：使用桶排序思想
  * 分析：
+ * 1. 获取数组中最大值、最小值
+ * 2. 获取数组中
  */
 public class CountingSort {
 
@@ -34,7 +36,7 @@ public class CountingSort {
             countingArr[arr[i] - min]++;
         }
         System.out.println("桶数组：" + Arrays.toString(countingArr));
-        //5. 对桶数组进行统计
+        //5. 对桶数组进行统计，arr[k]= 原始数组中比k小的数的个数 + k的个数
         int count = 0;
         for (int i = 0; i < countingArr.length; i++) {
             count += countingArr[i];
@@ -55,6 +57,7 @@ public class CountingSort {
     }
 
     /**
+     * 获取最大值
      * @param arr
      * @return
      */
@@ -69,6 +72,7 @@ public class CountingSort {
     }
 
     /**
+     * 获取最小值
      * @param arr
      * @return
      */

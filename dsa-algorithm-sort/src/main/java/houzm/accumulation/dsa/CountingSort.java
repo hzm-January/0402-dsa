@@ -19,6 +19,18 @@ import java.util.Arrays;
  * 6. 定义存放最终结果的数组int[] afterSortArr = new int[arr.length];
  * 7. 遍历取原始数组arr中的元素arr[i]，同时取出countingArr中对应该元素的值int index = countingArr[arr[i]-min]
  *      afterSortArr[index-1]= arr[i], 并对 countingArr[arr[i]-min] 减一
+ *
+ * 1. 排序算法执行效率
+ * 分析：如数组有n个元素，可以把元素均匀的分配到 m个桶，那么每个桶中的元素个数为k=n/m，
+ *      对每个桶进行快速排序的时间复杂度为O(k*logk)，m个桶的时间复杂度为O(n*log(n/m))
+ *
+ * 1.1 最好情况时间复杂度：O(n) 此时桶的个数接近元素个数
+ * 1.2 最坏情况时间复杂度：O(nlogn) 桶的个数为1
+ * 1.3 平均情况时间复杂度：O()
+ *
+ *
+ * 适用场景：外部排序
+ *
  */
 public class CountingSort {
 

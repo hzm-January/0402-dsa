@@ -27,7 +27,7 @@ public class CountingSort {
         sort(arr);
     }
 
-    public static void sort(int[] arr) {
+    public static int[] sort(int[] arr) {
         //1. 找出最大最小值
         int max = max(arr);
         int min = min(arr);
@@ -62,6 +62,7 @@ public class CountingSort {
         }
         System.out.println("原始数组：" + Arrays.toString(arr));
         System.out.println("排序数组：" + Arrays.toString(arrAfterSort));
+        return arrAfterSort;
     }
 
     /**

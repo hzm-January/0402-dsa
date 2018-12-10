@@ -1,4 +1,4 @@
-package houzm.accumulation.dsa;
+package houzm.accumulation.dsa.square;
 
 import java.util.Arrays;
 

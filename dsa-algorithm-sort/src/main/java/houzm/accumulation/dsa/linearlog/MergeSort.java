@@ -1,4 +1,4 @@
-package houzm.accumulation.dsa.logarithm;
+package houzm.accumulation.dsa.linearlog;
 
 import java.util.Arrays;
 

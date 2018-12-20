@@ -1,4 +1,4 @@
-package houzm.accumulation.search;
+package houzm.accumulation.search.binary.unique;
 
 import java.util.Arrays;
 

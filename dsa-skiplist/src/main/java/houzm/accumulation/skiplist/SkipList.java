@@ -269,5 +269,13 @@ public class SkipList {
         System.out.println(4 + " 在跳表中的节点信息：" + skipList.find(4));
         skipList.delete(4);
         System.out.println(4 + " 在跳表中的节点信息：" + skipList.find(4));
+        //打印结果
+//        8 在跳表中的节点信息：null
+//        Node{data=1, maxLevel=3} Node{data=2, maxLevel=7} Node{data=3, maxLevel=3}
+//        Node{data=1, maxLevel=3} Node{data=2, maxLevel=7} Node{data=3, maxLevel=3} Node{data=4, maxLevel=4} Node{data=5, maxLevel=4} Node{data=6, maxLevel=7}
+//        9 在跳表中的节点信息：null
+//        4 在跳表中的节点信息：Node{data=4, maxLevel=4}
+//        4 在跳表中的节点信息：null
+
     }
 }

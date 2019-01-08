@@ -6,8 +6,8 @@ package houzm.accumulation.tree.unique;
  * Modified By:
  * Description：二叉查找树(二叉搜索树)--无重复元素
  * 树：由n（n>=1）个有限结点组成一个具有层次关系的集合。把它叫做“树”是因为它看起来像一棵倒挂的树，也就是说它是根朝上，而叶朝下的。
- *     每个结点有零个或多个子结点；没有父结点的结点称为根结点；每一个非根结点有且只有一个父结点；
- *     除了根结点外，每个子结点可以分为多个不相交的子树；
+ * 每个结点有零个或多个子结点；没有父结点的结点称为根结点；每一个非根结点有且只有一个父结点；
+ * 除了根结点外，每个子结点可以分为多个不相交的子树；
  * 根节点：没有父节点的节点
  * 叶子节点(叶节点)：没有子节点的节点
  * 节点的高度：节点到叶子节点的最长路径(边数)
@@ -43,6 +43,7 @@ public class BinarySearchTree {
 
     /**
      * 插入
+     *
      * @param value
      */
     public void insert(int value) {
@@ -70,6 +71,7 @@ public class BinarySearchTree {
 
     /**
      * 查找
+     *
      * @param value
      * @return
      */
@@ -90,6 +92,7 @@ public class BinarySearchTree {
 
     /**
      * 删除
+     *
      * @param value
      */
     public void delete(int value) {
@@ -143,7 +146,36 @@ public class BinarySearchTree {
     }
 
     /**
+     * 计算树的高度
+     * 1. 树高度 = max(左子树高度， 右子树高度)+1
+     */
+    public int highMaxLR() {
+        return highMaxLR(root);
+    }
+
+    private int highMaxLR(Node p) {
+
+        if (p == null) {
+            return 0;
+        }
+//        int leftTreeHigh = highMaxLR(p.left) + 1;
+//        int rightTreeHigh = highMaxLR(p.right) + 1;
+        return Math.max(highMaxLR(p.left) + 1, highMaxLR(p.right) + 1);
+    }
+
+    /**
+     * 计算树的高度
+     * 2. 层序遍历，最后一层是高度
+     * 注：
+     * 每一层遍历，都记录当前队列长度，放入队尾
+     * 每一层队头从0开始，每遍历一个元素，队头下标+1，直到队头下标=队尾下标，标识本层遍历结束，树高度+1
+     * 队空，退出
+     *
+     */
+
+    /**
      * find min
+     *
      * @return
      */
     public Node findMin() {
@@ -159,6 +191,7 @@ public class BinarySearchTree {
 
     /**
      * find max
+     *
      * @return
      */
     public Node findMax() {
@@ -173,11 +206,10 @@ public class BinarySearchTree {
     }
 
     /**
-     * 中序遍历
+     * 中序遍历打印
      */
     public void inOrderPrint() {
-        Node p = root;
-        inOrder(p);
+        inOrder(root);
     }
 
     private void inOrder(Node p) {
@@ -185,8 +217,40 @@ public class BinarySearchTree {
             return;
         }
         inOrder(p.left);
-        System.out.print(p.data+" ");
+        System.out.print(p.data + " ");
         inOrder(p.right);
+    }
+
+    /**
+     * 前序遍历打印
+     */
+    public void preOrderPrint() {
+        preOrder(root);
+    }
+
+    private void preOrder(Node p) {
+        if (p == null) {
+            return;
+        }
+        System.out.print(p.data + " ");
+        preOrder(p.left);
+        preOrder(p.right);
+    }
+
+    /**
+     * 后序遍历
+     */
+    public void postOrderPrint() {
+        postOrder(root);
+    }
+
+    private void postOrder(Node p) {
+        if (p == null) {
+            return;
+        }
+        inOrder(p.left);
+        inOrder(p.right);
+        System.out.println(p.data + " ");
     }
 
     //节点
@@ -231,10 +295,19 @@ public class BinarySearchTree {
         tree.insert(3);
         tree.insert(5);
         tree.insert(8);
+        System.out.println("------ 前序遍历 ------");
+        tree.preOrderPrint();
+        System.out.println();
+        System.out.println("------ 中序遍历 ------");
         tree.inOrderPrint();
         System.out.println();
-        System.out.println("max: "+tree.findMax().data);
-        System.out.println("min: "+tree.findMin().data);
+        System.out.println("------ 后序遍历 ------");
+        tree.postOrderPrint();
+        System.out.println();
+        System.out.println("------ 树高度 ------");
+        System.out.println(tree.highMaxLR());
+        System.out.println("max: " + tree.findMax().data);
+        System.out.println("min: " + tree.findMin().data);
         tree.delete(3);
         tree.inOrderPrint();
         System.out.println();
@@ -242,6 +315,7 @@ public class BinarySearchTree {
         tree.inOrderPrint();
         System.out.println();
         System.out.println(tree.find(4).data);
+
         //打印结果
 //        1 3 4 5 8
 //        max: 8

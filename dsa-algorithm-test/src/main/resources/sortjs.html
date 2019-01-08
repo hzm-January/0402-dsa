@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello</title>
+
+</head>
+<body>
+
+
+</body>
+
+<script type="text/javascript">
+    //数组
+    var array = [6, 9, 7, 3, 5, 4, 1, 2, 8, 0];
+    console.log(array);
+    /**
+     * 平方阶
+     * @param array
+     */
+        //选择排序
+    var selectionSort = function (array) {
+            for (var i = 0; i < array.length; i++) {
+                var min = array[i];
+                var minIndex = -1;
+                for (var j = i + 1; j < array.length; j++) {
+                    if (array[j] < min) {
+                        min = array[j];
+                    }
+                }
+                if (minIndex != -1) {
+                    array[minIndex] = array[i];
+                    array[i] = min;
+                }
+            }
+        }
+    // bubbleSort(array);
+    // console.log(array);
+    //冒泡排序
+    var bubbleSort = function (array) {
+        for (var i = 0; i < array.length - 1; i++) {
+            var flag = false;
+            for (var j = i + 1; j < array.length; j++) {
+                if (array[i] > array[j]) {
+                    var temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                    flag = true;
+                }
+            }
+            if (!flag) {
+                break;
+            }
+        }
+    }
+    // selectionSort(array);
+    // console.log(array);
+    //插入排序
+    var insertSort = function (array) {
+        for (var i = 1; i < array.length; i++) {
+            var temp = array[i];
+            for (var j = i - 1; j >= 0; --j) {
+                if (array[j] > temp) {
+                    array[j + 1] = array[j];
+                }
+                if (array[j] < temp) {
+                    array[j + 1] = temp;
+                    break;
+                }
+                if (j == 0) {
+                    array[j] = temp;
+                }
+            }
+        }
+    };
+    // insertSort(array);
+    // console.log(array);
+
+    /**
+     * 线性对数阶
+     */
+        //归并排序
+    var mergeSort = function (array) {
+            return mergeSortSupport(array, 0, array.length - 1);
+        }
+    var mergeSortSupport = function (array, start, end) {
+        var middle = start + ((end - start) >> 1);
+        if (start >= end) {
+            return [array[middle]];
+        }
+        return merge(mergeSortSupport(array, start, middle), mergeSortSupport(array, middle + 1, end));
+    }
+    var merge = function (arrayPre, arrayAft) {
+        var arrayCopy = [];
+        var p = 0;
+        var q = 0;
+        while (p < arrayPre.length && q < arrayAft.length) {
+            if (arrayPre[p] > arrayAft[q]) {
+                arrayCopy.push(arrayAft[q++]);
+            } else {
+                arrayCopy.push(arrayPre[p++]);
+            }
+        }
+        if (p < arrayPre.length) {
+            arrayCopy = arrayCopy.concat(arrayPre.slice(p));
+        }
+        if (q < arrayAft.length) {
+            arrayCopy = arrayCopy.concat(arrayAft.slice(q));
+        }
+        return arrayCopy;
+    }
+    // console.log("合并排序: "+ mergeSort(array));
+    // 快速排序
+    var quickSort = function (array) {
+        var arrayCopy = JSON.parse(JSON.stringify(array));
+        quickSortSupport(arrayCopy, 0, arrayCopy.length-1);
+        return arrayCopy;
+    }
+    var quickSortSupport = function (array, start, end) {
+        if (start >= end) {
+            return;
+        }
+        var pivot = partition(array, start, end);
+        quickSortSupport(array, start, pivot-1);
+        quickSortSupport(array, pivot + 1, end);
+    }
+    var partition = function (array, start, end) {
+        var pivot = array[end];
+        var p = start;
+        var q = start;
+        while (p < end && q < end) {
+            if (array[q] < pivot) {
+                var temp = array[q];
+                array[q] = array[p];
+                array[p] = temp;
+                p++;
+            }
+            q++;
+        }
+        array[end] = array[p];
+        array[p] = pivot;
+        return p;
+    }
+    console.log(quickSort(array));
+</script>
+
+
+</html>

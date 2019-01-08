@@ -3,7 +3,7 @@ package houzm.accumulation.dsa;
 /**
  * author: hzm_dream@163.com
  * date: 2018/12/3 15:36
- * description: 递归实战--上台阶
+ * description: 递归实战--上台阶--斐波那契
  * <p>
  * 题目：若有n个台阶，每步可以走一个台阶或者两个台阶，问有多少种走法
  */

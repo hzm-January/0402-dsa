@@ -1,6 +1,13 @@
 # 数据结构与算法 学习笔记
-## [数组](https://github.com/hzm-January/0402-dsa/tree/master/dsa-array)
-## [链表](https://github.com/hzm-January/0402-dsa/tree/master/dsa-linkedlist)
+## 线性表结构
++ [数组](https://github.com/hzm-January/0402-dsa/tree/master/dsa-array)
++ [链表](https://github.com/hzm-January/0402-dsa/tree/master/dsa-linkedlist)
++ [栈](https://github.com/hzm-January/0402-dsa/tree/master/dsa-stack)
++ [队列](https://github.com/hzm-January/0402-dsa/tree/master/dsa-queue)
+## 非线性表结构
++ [树](https://github.com/hzm-January/0402-dsa/tree/master/dsa-tree)
++ [图]()
+
 ## 什么是数据结构和算法
 数据结构：存储数据的结构  
 算法：操作数据的方法  
@@ -71,4 +78,3 @@ T(n)：执行时间
 表示算法的存储空间与数据规模之间的增长关系   
 坐标图侵删（出处：https://www.cnblogs.com/yuduxyz/p/9734367.html）
 ![坐标图](https://github.com/hzm-January/0402-dsa/blob/master/graph.jpg)
-

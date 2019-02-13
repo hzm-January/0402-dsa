@@ -227,7 +227,7 @@ public class SinglyLinkedList<T> {
         //2.1 查找中间节点
         Node p = head;
         Node q = head;
-        while (p.next != null && q.next.next != null) {
+        while (q.next != null && q.next.next != null) {
             p = p.next; //p走一个步长
             q = q.next.next; //q走两个步长
         }

@@ -87,7 +87,7 @@ public class DoublyLinkedList<T> {
         while (p.next != null && p.data != node.data) {
             p = p.next;
         }
-        if (p == null) {
+        if (p.next == null) {
             return false; //结点不存在
         }
 
@@ -108,6 +108,7 @@ public class DoublyLinkedList<T> {
             if (p.data == t) {
                 break;
             }
+            p = p.next;
         }
         if (p == null) {
             return false;
@@ -120,9 +121,9 @@ public class DoublyLinkedList<T> {
     //回文判断
     public boolean isPalindrome() {
         //获取中点
-        Node p = null;
-        Node q = null;
-        while (p != null && q != null) {
+        Node p = head;
+        Node q = head;
+        while (q.next != null && q.next.next != null) {
             p = p.next;
             q = q.next.next;
         }
@@ -165,7 +166,7 @@ public class DoublyLinkedList<T> {
         Node p = node;
         Node next = null;
         Node prev = null;
-        while (p.prev != head) {
+        while (p.prev != null) {
             next = node.next;
             prev = node.prev;
             node.next = prev;

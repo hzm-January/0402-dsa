@@ -7,7 +7,7 @@ package houzm.accumulation.dsa.doubly.sentinelhead;
  */
 public class DoublyLinkedList<T> {
 
-    private Node<T> head = new Node<T>((T)new Object(), null, null);
+    private Node<T> head = new Node<T>((T) new Object(), null, null);
 
     //链表尾部添加
     public boolean addToLast(T t) {
@@ -72,19 +72,14 @@ public class DoublyLinkedList<T> {
 
     //根据结点删除
     public boolean delNode(Node node) {
-        // 校验链表是否为空
-        if (head == null) {
-            return false;
-        }
         // 校验结点存在于链表
         Node p = head;
         while (p.next != null && p.data != node.data) {
             p = p.next;
         }
-        if (p == null) {
+        if (p.next == null || p == head) {
             return false; //结点不存在
         }
-
         node.next.prev = node.prev; // 更改前驱指针
         node.prev.next = node.next; // 更改后继指针
         return true;
@@ -92,21 +87,20 @@ public class DoublyLinkedList<T> {
 
     //根据值删除结点
     public boolean delNode(T t) {
-        // 校验链表是否为空
-        if (head == null) {
-            return false;
-        }
         // 定位结点
         Node p = head;
         while (p != null) {
             if (p.data == t) {
                 break;
             }
+            p = p.next;
         }
-        if (p == null) {
+        if (p == null || p == head) {
             return false;
         }
-        p.next.prev = p.prev;
+        if (p.next != null) {
+            p.next.prev = p.prev;
+        }
         p.prev.next = p.next;
         return true;
     }
@@ -114,9 +108,9 @@ public class DoublyLinkedList<T> {
     //回文判断
     public boolean isPalindrome() {
         //获取中点
-        Node p = null;
-        Node q = null;
-        while (p != null && q != null) {
+        Node p = head.next;
+        Node q = head.next;
+        while (q.next != null && q.next.next != null) {
             p = p.next;
             q = q.next.next;
         }
@@ -140,7 +134,7 @@ public class DoublyLinkedList<T> {
         Node p = left;
         Node q = right;
         while (p != null && q != null) {
-            if (p.next == q.next) {
+            if (p.data == q.data) {
                 p = p.next;
                 q = q.next;
                 continue;
@@ -160,15 +154,19 @@ public class DoublyLinkedList<T> {
         Node next = null;
         Node prev = null;
         while (p.prev != head) {
-            next = node.next;
-            prev = node.prev;
-            node.next = prev;
-            node.prev = next;
-            p = prev;
+            next = p.prev;
+            p.next = next;
+            p.prev = prev;
+            prev = p;
+            p = next;
         }
-        return node;
+        p.prev = prev;
+        p.next = null;
+        return p;
     }
+
     //链表翻转
+
     /**
      * 结点
      *

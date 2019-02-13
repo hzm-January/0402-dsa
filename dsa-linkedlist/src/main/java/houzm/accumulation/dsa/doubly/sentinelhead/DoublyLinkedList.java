@@ -1,4 +1,4 @@
-package houzm.accumulation.dsa.doubly.nohead;
+package houzm.accumulation.dsa.doubly.sentinelhead;
 
 /**
  * author: hzm_dream@163.com
@@ -7,15 +7,11 @@ package houzm.accumulation.dsa.doubly.nohead;
  */
 public class DoublyLinkedList<T> {
 
-    private Node<T> head = null;
+    private Node<T> head = new Node<T>((T)new Object(), null, null);
 
     //链表尾部添加
     public boolean addToLast(T t) {
         Node<T> newNode = new Node<>(t, null, null);
-        if (head == null) {
-            head = newNode;
-            return true;
-        }
         Node p = head;
         while (p.next != null) {
             p = p.next;
@@ -28,12 +24,9 @@ public class DoublyLinkedList<T> {
     //链表头部添加
     public boolean addToHead(T t) {
         Node<T> newNode = new Node<>(t, null, null);
-        if (head == null) {
-            head = newNode;
-            return true;
-        }
-        newNode.next = head;
-        head.prev = newNode;
+        newNode.prev = head;
+        newNode.next = head.next;
+        head.next = newNode;
         return true;
     }
 
@@ -53,12 +46,13 @@ public class DoublyLinkedList<T> {
 
     //链表尾部删除
     public boolean removeLast() {
-        if (head == null) {
-            return true;
-        }
         Node p = head;
         while (p.next != null) {
             p = p.next;
+        }
+        if (p.prev == null) {
+            //当前链表只有一个头哨兵结点
+            return false;
         }
         p.prev.next = null;
         return true;
@@ -66,13 +60,13 @@ public class DoublyLinkedList<T> {
 
     //链表头部删除
     public boolean removeHead() {
-        if (head == null) {
+        if (head.next == null) {
             return true;
         }
-        if (head.next != null) {
-            head.next.prev = null;
+        if (head.next.next != null) {
+            head.next.next.prev = null;
         }
-        head = head.next;
+        head.next = head.next.next;
         return true;
     }
 

@@ -1,4 +1,4 @@
-package houzm.accumulation.dsa.nohead;
+package houzm.accumulation.dsa.singly.nohead;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -6,15 +6,15 @@ import org.junit.Before;
 import org.junit.After;
 
 /**
- * LinkedList Tester.
+ * SinglyLinkedList Tester.
  *
  * @author houzm
  * @version 1.0
  * @since <pre>12/01/2018</pre>
  */
-public class LinkedListTest {
-    LinkedList<Integer> list = new LinkedList<>();
-    LinkedList<Integer> listPalindrome = new LinkedList<>();
+public class SinglySinglyLinkedListTest {
+    SinglyLinkedList<Integer> list = new SinglyLinkedList<>();
+    SinglyLinkedList<Integer> listPalindrome = new SinglyLinkedList<>();
 
     @Before
     public void before() throws Exception {
@@ -124,7 +124,7 @@ public class LinkedListTest {
      */
     @Test
     public void testInverse() throws Exception {
-        LinkedList.Node head = list.inverse();
+        SinglyLinkedList.Node head = list.inverse();
         while (head != null) {
             System.out.print(head.getData() + " ");
             head = head.getNext();
@@ -181,7 +181,7 @@ public class LinkedListTest {
 //TODO: Test goes here...
 /*
 try {
-   Method method = LinkedList.getClass().getMethod("deleteOnlyHead");
+   Method method = SinglyLinkedList.getClass().getMethod("deleteOnlyHead");
    method.setAccessible(true);
    method.invoke(<Object>, <Parameters>);
 } catch(NoSuchMethodException e) {
@@ -200,7 +200,7 @@ try {
 //TODO: Test goes here...
 /*
 try {
-   Method method = LinkedList.getClass().getMethod("linkLast", T.class);
+   Method method = SinglyLinkedList.getClass().getMethod("linkLast", T.class);
    method.setAccessible(true);
    method.invoke(<Object>, <Parameters>);
 } catch(NoSuchMethodException e) {
@@ -218,7 +218,7 @@ try {
 //TODO: Test goes here...
 /*
 try {
-   Method method = LinkedList.getClass().getMethod("compareLF", Node.class, Node.class);
+   Method method = SinglyLinkedList.getClass().getMethod("compareLF", Node.class, Node.class);
    method.setAccessible(true);
    method.invoke(<Object>, <Parameters>);
 } catch(NoSuchMethodException e) {

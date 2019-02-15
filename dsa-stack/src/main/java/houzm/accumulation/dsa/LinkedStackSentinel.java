@@ -47,6 +47,21 @@ public class LinkedStackSentinel<T> {
     }
 
     /**
+     * 栈深度
+     * @return
+     */
+    public int deep() {
+        int deep = 0;
+        Node p = sentinel.next;
+        while (p != null) {
+            deep++;
+            p = p.next;
+        }
+        return deep;
+    }
+
+
+    /**
      * 打印所有节点
      */
     public void printAll() {

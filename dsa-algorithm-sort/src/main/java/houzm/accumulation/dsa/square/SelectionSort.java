@@ -31,30 +31,34 @@ public class SelectionSort {
         int[] arr = new int[]{6,4,5,1,3,2};
 //        int[] arr = new int[]{3,5,5,1,3,2};
         System.out.println(Arrays.toString(arr));
-        sort(arr);
-        System.out.println(Arrays.toString(arr));
+        int[] sort = sort(arr);
+        System.out.println(Arrays.toString(sort));
     }
+
+
 
     /**
      * 选择排序
      * @param arr
      */
-    public static void sort(int[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            int temp = arr[i];
-            int n = -1;
-            for (int j = i; j < arr.length; j++) {
-                if (temp > arr[j]) {
-                    temp = arr[j];
-                    n = j;
+    private static int[] sort(int[] arr) {
+        int[] copyArr = new int[arr.length];
+        System.arraycopy(arr, 0, copyArr, 0, arr.length);
+        for (int i = 0; i < copyArr.length - 1; i++) {
+            int minIndex = -1;
+            int min = copyArr[i];
+            for (int j = i+1; j < copyArr.length; j++) {
+                if (copyArr[j] < min) {
+                    min = copyArr[j];
+                    minIndex = j;
                 }
             }
-            if (n != -1) {
-                // 找到本轮最小值元素
-                arr[n] = arr[i];
-                arr[i] = temp;
+            if (minIndex != -1) {
+                copyArr[minIndex] = copyArr[i];
+                copyArr[i] = min;
             }
         }
+        return copyArr;
     }
 
 }

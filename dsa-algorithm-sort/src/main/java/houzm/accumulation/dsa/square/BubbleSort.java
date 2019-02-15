@@ -36,33 +36,60 @@ import java.util.Arrays;
  */
 public class BubbleSort {
     public static void main(String[] args) {
-//        int[] arr = new int[]{6,4,5,1,3,2};
-        int[] arr = new int[]{3, 5, 5, 1, 3, 2};
+        int[] arr = new int[]{6,4,5,1,3,2};
+//        int[] arr = new int[]{3, 5, 5, 1, 3, 2};
         System.out.println(Arrays.toString(arr));
-        sort(arr);
-        System.out.println(Arrays.toString(arr));
+//        int[] sortArr = sortFTL(arr);
+        int[] sortArr = sortLTF(arr);
+        System.out.println(Arrays.toString(sortArr));
     }
 
     /**
      * 冒泡排序
-     *
+     * 从前到后冒泡
      * @param arr
      */
-    public static void sort(int[] arr) {
-        for (int j = 0; j < arr.length - 1; j++) {
-            //记录是否有交换发生的标志位，用于提前退出冒泡循环
+    private static int[] sortFTL(int[] arr) {
+        int[] copyArr = new int[arr.length];
+        System.arraycopy(arr, 0, copyArr, 0, arr.length);
+        for (int i = 0; i < copyArr.length-1; i++) {
             boolean flag = false;
-            for (int i = arr.length - 1; i > j; i--) {
-                if (arr[i] < arr[i - 1]) {
-                    int temp = arr[i - 1];
-                    arr[i - 1] = arr[i];
-                    arr[i] = temp;
+            for (int j = 0; j < copyArr.length-1-i; j++) {
+                if (copyArr[j] > copyArr[j + 1]) {
+                    int temp = copyArr[j];
+                    copyArr[j] = copyArr[j+1];
+                    copyArr[j+1] = temp;
                     flag = true;
                 }
             }
             if (!flag) {
-                break; //没有数据交换，退提前出，避免后续无效的比较
+                break;
             }
         }
+        return copyArr;
+    }
+    /**
+     * 冒泡排序
+     * 从后到前冒泡
+     * @param arr
+     */
+    public static int[] sortLTF(int[] arr) {
+        int[] copyArr = new int[arr.length];
+        System.arraycopy(arr, 0, copyArr, 0, arr.length);
+        for (int i = 0; i < copyArr.length - 1; i++) {
+            boolean flag = false;
+            for (int j = copyArr.length-1; j > i; j--) {
+                if (copyArr[j] < copyArr[j - 1]) {
+                    int temp = copyArr[j];
+                    copyArr[j] = copyArr[j-1];
+                    copyArr[j-1] = temp;
+                    flag = true;
+                }
+            }
+            if (!flag) {
+                break;
+            }
+        }
+        return copyArr;
     }
 }

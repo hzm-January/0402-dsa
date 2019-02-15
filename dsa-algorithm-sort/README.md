@@ -9,7 +9,7 @@
 |选择排序|O(n^2)|||是|是|是|
 |插入排序|O(n^2)|||是|是|是|
 ## 冒泡排序
-<iframe height=500 width=500 src="http://ww4.sinaimg.cn/mw690/e75a115bgw1f3rrbzv1m8g209v0diqv7.gif">  
+<iframe height=500 width=500 src="https://github.com/hzm-January/0402-dsa/blob/master/dsa-algorithm-sort/src/main/resources/sortimage/bubble.gif">  
 
 ## 参考
 [https://www.cnblogs.com/onepixel/p/7674659.html](https://www.cnblogs.com/onepixel/p/7674659.html)  

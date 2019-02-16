@@ -31,7 +31,8 @@ public class SelectionSort {
         int[] arr = new int[]{6,4,5,1,3,2};
 //        int[] arr = new int[]{3,5,5,1,3,2};
         System.out.println(Arrays.toString(arr));
-        int[] sort = sort(arr);
+//        int[] sort = sortNotChange(arr);
+        int[] sort = sortLiteNotChange(arr);
         System.out.println(Arrays.toString(sort));
     }
 
@@ -41,7 +42,7 @@ public class SelectionSort {
      * 选择排序
      * @param arr
      */
-    private static int[] sort(int[] arr) {
+    private static int[] sortNotChange(int[] arr) {
         int[] copyArr = new int[arr.length];
         System.arraycopy(arr, 0, copyArr, 0, arr.length);
         for (int i = 0; i < copyArr.length - 1; i++) {
@@ -60,5 +61,49 @@ public class SelectionSort {
         }
         return copyArr;
     }
+    /**
+     * 选择排序
+     *
+     * @param arr
+     */
+    private static int[] sortLiteNotChange(int[] arr) {
+        int[] copyArr = new int[arr.length];
+        System.arraycopy(arr, 0, copyArr, 0, arr.length);
+        for (int i = 0; i < copyArr.length - 1; i++) {
+            int minIndex = i;
+            for (int j = i+1; j < copyArr.length; j++) {
+                if (copyArr[j] < copyArr[minIndex]) {
+                    minIndex = j;
+                }
+            }
+            if (minIndex != i) {
+                int min = copyArr[minIndex];
+                copyArr[minIndex] = copyArr[i];
+                copyArr[i] = min;
+            }
+        }
+        return copyArr;
+    }
 
+    /**
+     * 选择排序
+     * @param arr
+     */
+    public static void sort(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            int temp = arr[i];
+            int n = -1;
+            for (int j = i; j < arr.length; j++) {
+                if (temp > arr[j]) {
+                    temp = arr[j];
+                    n = j;
+                }
+            }
+            if (n != -1) {
+                // 找到本轮最小值元素
+                arr[n] = arr[i];
+                arr[i] = temp;
+            }
+        }
+    }
 }

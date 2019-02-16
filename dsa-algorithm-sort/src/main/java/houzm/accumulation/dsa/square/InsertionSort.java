@@ -28,10 +28,31 @@ public class InsertionSort {
         int[] arr = new int[]{6, 4, 5, 1, 3, 2};
 //        int[] arr = new int[]{3, 5, 5, 1, 3, 2};
         System.out.println(Arrays.toString(arr));
-//        sort(arr);
-        sortOptimize(arr);
-        System.out.println(Arrays.toString(arr));
+        int[] sorted = sortNotChange(arr);
+//        sortOptimize(arr);
+        System.out.println(Arrays.toString(sorted));
     }
+
+    private static int[] sortNotChange(int[] arr) {
+        int[] copyArr = new int[arr.length];
+        System.arraycopy(arr, 0, copyArr, 0, arr.length);
+        for (int i = 1; i < copyArr.length; i++) {
+            int temp = copyArr[i];
+            for (int j = i-1; j >=0; j--) {
+                if (temp > copyArr[j]) {
+                    copyArr[j+1] = temp;
+                    break;
+                } else {
+                    copyArr[j+1] = copyArr[j];
+                }
+                if (j == 0) {
+                    copyArr[0] = temp;
+                }
+            }
+        }
+        return copyArr;
+    }
+
 
     /**
      * 插入排序

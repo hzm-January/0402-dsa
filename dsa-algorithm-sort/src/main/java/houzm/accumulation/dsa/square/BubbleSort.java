@@ -43,6 +43,28 @@ public class BubbleSort {
         int[] sortArr = sortLTF(arr);
         System.out.println(Arrays.toString(sortArr));
     }
+    /**
+     * 冒泡排序
+     *
+     * @param arr
+     */
+    public static void sort(int[] arr) {
+        for (int j = 0; j < arr.length - 1; j++) {
+            //记录是否有交换发生的标志位，用于提前退出冒泡循环
+            boolean flag = false;
+            for (int i = arr.length - 1; i > j; i--) {
+                if (arr[i] < arr[i - 1]) {
+                    int temp = arr[i - 1];
+                    arr[i - 1] = arr[i];
+                    arr[i] = temp;
+                    flag = true;
+                }
+            }
+            if (!flag) {
+                break; //没有数据交换，退提前出，避免后续无效的比较
+            }
+        }
+    }
 
     /**
      * 冒泡排序
@@ -92,4 +114,5 @@ public class BubbleSort {
         }
         return copyArr;
     }
+
 }

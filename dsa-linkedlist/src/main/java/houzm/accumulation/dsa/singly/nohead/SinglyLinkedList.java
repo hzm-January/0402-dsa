@@ -312,6 +312,18 @@ public class SinglyLinkedList<T> {
         return headAfterInverse;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder(100);
+        Node p = head;
+        while (p != null) {
+            sb.append(p.data);
+            sb.append(" ");
+            p = p.next;
+        }
+        return sb.toString();
+    }
+
     /**
      * 节点
      *

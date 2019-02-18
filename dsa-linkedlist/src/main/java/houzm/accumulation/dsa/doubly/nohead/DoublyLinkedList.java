@@ -163,17 +163,22 @@ public class DoublyLinkedList<T> {
 
     //翻转链表
     private Node inverse(Node node) {
-        Node p = node;
+        Node p = head;
+        if (p == null) {
+            return null;
+        }
         Node next = null;
         Node prev = null;
-        while (p.prev != null) {
-            next = node.next;
-            prev = node.prev;
-            node.next = prev;
-            node.prev = next;
-            p = prev;
+        while (p != node) {
+            next = p.next;
+            p.next = prev;
+            p.prev = next;
+            prev = p;
+            p = next;
         }
-        return node;
+        p.prev = null;
+        p.next = prev;
+        return p;
     }
     //链表翻转
     /**

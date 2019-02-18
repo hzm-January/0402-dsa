@@ -185,7 +185,6 @@ public class SinglyLinkedList<T> {
      * @return
      */
     public boolean palindrome() {
-        boolean flag = false;
         //1. 边界条件判断
         if (sentinel.next == null) {
             return false;
@@ -208,8 +207,7 @@ public class SinglyLinkedList<T> {
             left = inverse(p);
         }
         //回文比较核心代码
-        compareLF(left, right);
-        return flag;
+        return compareLF(left, right);
     }
 
     /**
@@ -244,8 +242,7 @@ public class SinglyLinkedList<T> {
     public Node inverse(Node p) {
         //pre反转链表初始节点
         Node pre = null;
-        Node head = sentinel.next;
-        Node e = head;
+        Node e = sentinel.next;
         Node next = null;
         while (e != p) {
             // 为了向前移动e，保留e.next
@@ -279,6 +276,18 @@ public class SinglyLinkedList<T> {
             p = next;
         }
         return head;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder(100);
+        Node p = sentinel.next;
+        while (p != null) {
+            sb.append(p.data);
+            sb.append(" ");
+            p = p.next;
+        }
+        return sb.toString();
     }
 
     /**

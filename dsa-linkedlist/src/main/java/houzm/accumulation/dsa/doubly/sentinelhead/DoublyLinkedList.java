@@ -150,18 +150,21 @@ public class DoublyLinkedList<T> {
 
     //翻转链表
     private Node inverse(Node node) {
-        Node p = node;
+        Node p = head.next;
+        if (p == null) {
+            return null;
+        }
         Node next = null;
         Node prev = null;
-        while (p.prev != head) {
-            next = p.prev;
-            p.next = next;
-            p.prev = prev;
+        while (p != node) {
+            next = p.next;
+            p.next = prev;
+            p.prev = next;
             prev = p;
             p = next;
         }
-        p.prev = prev;
-        p.next = null;
+        p.prev = null;
+        p.next = prev;
         return p;
     }
 

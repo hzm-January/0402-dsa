@@ -1,4 +1,4 @@
-package houzm.accumulation.dsa.singly.nohead;
+package houzm.accumulation.dsa.singly.sentinelhead;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -8,11 +8,11 @@ import org.junit.After;
 /**
  * SinglyLinkedList Tester.
  *
- * @author houzm
+ * @author <Authors name>
  * @version 1.0
- * @since <pre>12/01/2018</pre>
+ * @since <pre>02/14/2019</pre>
  */
-public class SinglySinglyLinkedListTest {
+public class SinglyLinkedListTest {
     SinglyLinkedList<Integer> list = new SinglyLinkedList<>();
     SinglyLinkedList<Integer> listPalindrome = new SinglyLinkedList<>();
 
@@ -43,7 +43,7 @@ public class SinglySinglyLinkedListTest {
      */
     @Test
     public void testAddToLast() throws Exception {
-//TODO: Test goes here...
+//TODO: Test goes here... 
     }
 
     /**
@@ -51,15 +51,7 @@ public class SinglySinglyLinkedListTest {
      */
     @Test
     public void testAddToHead() throws Exception {
-//TODO: Test goes here...
-    }
-
-    /**
-     * Method: addAfter(Node node, T t)
-     */
-    @Test
-    public void testAddAfter() throws Exception {
-//TODO: Test goes here...
+//TODO: Test goes here... 
     }
 
     /**
@@ -67,7 +59,7 @@ public class SinglySinglyLinkedListTest {
      */
     @Test
     public void testAddBefore() throws Exception {
-//TODO: Test goes here...
+//TODO: Test goes here... 
     }
 
     /**
@@ -75,7 +67,7 @@ public class SinglySinglyLinkedListTest {
      */
     @Test
     public void testDeleteLast() throws Exception {
-//TODO: Test goes here...
+//TODO: Test goes here... 
     }
 
     /**
@@ -83,7 +75,7 @@ public class SinglySinglyLinkedListTest {
      */
     @Test
     public void testDeleteFirst() throws Exception {
-//TODO: Test goes here...
+//TODO: Test goes here... 
     }
 
     /**
@@ -91,7 +83,7 @@ public class SinglySinglyLinkedListTest {
      */
     @Test
     public void testDeleteByNode() throws Exception {
-//TODO: Test goes here...
+//TODO: Test goes here... 
     }
 
     /**
@@ -99,9 +91,7 @@ public class SinglySinglyLinkedListTest {
      */
     @Test
     public void testDeleteByValue() throws Exception {
-        list.printAll();
-        list.deleteByValue(3);
-        list.printAll();
+//TODO: Test goes here... 
     }
 
     /**
@@ -110,8 +100,6 @@ public class SinglySinglyLinkedListTest {
     @Test
     public void testPalindrome() throws Exception {
         Assert.assertEquals(true, listPalindrome.palindrome());
-        System.out.println(listPalindrome);
-//        Assert.assertEquals(true, list.palindrome());
     }
 
     /**
@@ -119,7 +107,7 @@ public class SinglySinglyLinkedListTest {
      */
     @Test
     public void testInverseP() throws Exception {
-//TODO: Test goes here...
+//TODO: Test goes here... 
     }
 
     /**
@@ -127,21 +115,7 @@ public class SinglySinglyLinkedListTest {
      */
     @Test
     public void testInverse() throws Exception {
-        SinglyLinkedList.Node head = list.inverse();
-        while (head != null) {
-            System.out.print(head.getData() + " ");
-            head = head.getNext();
-        }
-        System.out.println();
-        System.out.println(list);
-    }
-
-    /**
-     * Method: printAll()
-     */
-    @Test
-    public void testPrintAll() throws Exception {
-        list.printAll();
+//TODO: Test goes here... 
     }
 
     /**
@@ -149,7 +123,7 @@ public class SinglySinglyLinkedListTest {
      */
     @Test
     public void testGetData() throws Exception {
-//TODO: Test goes here...
+//TODO: Test goes here... 
     }
 
     /**
@@ -157,7 +131,7 @@ public class SinglySinglyLinkedListTest {
      */
     @Test
     public void testSetData() throws Exception {
-//TODO: Test goes here...
+//TODO: Test goes here... 
     }
 
     /**
@@ -165,7 +139,7 @@ public class SinglySinglyLinkedListTest {
      */
     @Test
     public void testGetNext() throws Exception {
-//TODO: Test goes here...
+//TODO: Test goes here... 
     }
 
     /**
@@ -173,7 +147,7 @@ public class SinglySinglyLinkedListTest {
      */
     @Test
     public void testSetNext() throws Exception {
-//TODO: Test goes here...
+//TODO: Test goes here... 
     }
 
 
@@ -182,35 +156,52 @@ public class SinglySinglyLinkedListTest {
      */
     @Test
     public void testDeleteOnlyHead() throws Exception {
-//TODO: Test goes here...
-/*
-try {
-   Method method = SinglyLinkedList.getClass().getMethod("deleteOnlyHead");
-   method.setAccessible(true);
-   method.invoke(<Object>, <Parameters>);
-} catch(NoSuchMethodException e) {
-} catch(IllegalAccessException e) {
-} catch(InvocationTargetException e) {
-}
+//TODO: Test goes here... 
+/* 
+try { 
+   Method method = SinglyLinkedList.getClass().getMethod("deleteOnlyHead"); 
+   method.setAccessible(true); 
+   method.invoke(<Object>, <Parameters>); 
+} catch(NoSuchMethodException e) { 
+} catch(IllegalAccessException e) { 
+} catch(InvocationTargetException e) { 
+} 
 */
     }
 
+    /**
+     * Method: addAfter(Node node, Node newNode)
+     */
+    @Test
+    public void testAddAfter() throws Exception {
+//TODO: Test goes here... 
+/* 
+try { 
+   Method method = SinglyLinkedList.getClass().getMethod("addAfter", Node.class, Node.class); 
+   method.setAccessible(true); 
+   method.invoke(<Object>, <Parameters>); 
+} catch(NoSuchMethodException e) { 
+} catch(IllegalAccessException e) { 
+} catch(InvocationTargetException e) { 
+} 
+*/
+    }
 
     /**
      * Method: linkLast(T t)
      */
     @Test
     public void testLinkLast() throws Exception {
-//TODO: Test goes here...
-/*
-try {
-   Method method = SinglyLinkedList.getClass().getMethod("linkLast", T.class);
-   method.setAccessible(true);
-   method.invoke(<Object>, <Parameters>);
-} catch(NoSuchMethodException e) {
-} catch(IllegalAccessException e) {
-} catch(InvocationTargetException e) {
-}
+//TODO: Test goes here... 
+/* 
+try { 
+   Method method = SinglyLinkedList.getClass().getMethod("linkLast", T.class); 
+   method.setAccessible(true); 
+   method.invoke(<Object>, <Parameters>); 
+} catch(NoSuchMethodException e) { 
+} catch(IllegalAccessException e) { 
+} catch(InvocationTargetException e) { 
+} 
 */
     }
 
@@ -219,16 +210,16 @@ try {
      */
     @Test
     public void testCompareLF() throws Exception {
-//TODO: Test goes here...
-/*
-try {
-   Method method = SinglyLinkedList.getClass().getMethod("compareLF", Node.class, Node.class);
-   method.setAccessible(true);
-   method.invoke(<Object>, <Parameters>);
-} catch(NoSuchMethodException e) {
-} catch(IllegalAccessException e) {
-} catch(InvocationTargetException e) {
-}
+//TODO: Test goes here... 
+/* 
+try { 
+   Method method = SinglyLinkedList.getClass().getMethod("compareLF", Node.class, Node.class); 
+   method.setAccessible(true); 
+   method.invoke(<Object>, <Parameters>); 
+} catch(NoSuchMethodException e) { 
+} catch(IllegalAccessException e) { 
+} catch(InvocationTargetException e) { 
+} 
 */
     }
 

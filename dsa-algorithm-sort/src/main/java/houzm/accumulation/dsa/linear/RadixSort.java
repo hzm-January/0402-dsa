@@ -12,21 +12,20 @@ import java.util.Arrays;
 public class RadixSort {
     public static void main(String[] args) {
         String[] arr = new String[]{"15261530518", "14416762734", "18777237343"};
-        sort(arr);
+        String[] sort = sort(arr);
+        System.out.println(Arrays.toString(sort));
     }
 
-    public static void sort(String[] arr) {
+    public static String[] sort(String[] arr) {
         int length = arr[0].length(); //手机号长度
-        for (int i = 0; i < length; i++) {
-            int charIndex = length - 1;
-            sort(arr, charIndex);
+        String[] result = new String[arr.length];
+        for (int i = length - 1; i > 0; i--) {
+            result = sort(arr, i);
         }
-
-
-
+        return result;
     }
 
-    private static void sort(String[] arr, int charIndex) {
+    private static String[] sort(String[] arr, int charIndex) {
         System.out.println(Arrays.toString(arr));
         //1. 获取每个手机号index位置数字最小值min和最大值max
         int max = max(arr, charIndex);
@@ -61,7 +60,8 @@ public class RadixSort {
             countingArr[num - min]--;
         }
 
-        System.out.println(Arrays.toString(result));
+        System.out.println("第" + charIndex + "位" + Arrays.toString(result));
+        return result;
     }
 
     /**

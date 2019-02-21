@@ -25,6 +25,8 @@
 |冒泡排序|O(n^2)|O(n)|O(n^2)|O(1)|是|是|
 |插入排序|O(n^2)|O(n)|O(n^2)|O(1)|是|是|
 |选择排序|O(n^2)|O(n^2)|O(n^2)|O(1)|是|否|
+|归并排序|O(nlogn)|O(nlogn)|O(nlogn)|O(n)|是|是|
+|快速排序|O(n^2)|O(n^2)|O(n^2)|O(1)|是|否|
 ## 冒泡排序（Bubble Sort）
 
 ![冒泡排序](https://github.com/hzm-January/0402-dsa/blob/master/dsa-algorithm-sort/src/main/resources/sortimages/bubble.gif)
@@ -32,6 +34,10 @@
 ![选择排序](https://github.com/hzm-January/0402-dsa/blob/master/dsa-algorithm-sort/src/main/resources/sortimages/selection.gif)
 ## 插入排序
 ![插入排序](https://github.com/hzm-January/0402-dsa/blob/master/dsa-algorithm-sort/src/main/resources/sortimages/insert.gif)
+## 归并排序
+![归并排序](https://github.com/hzm-January/0402-dsa/blob/master/dsa-algorithm-sort/src/main/resources/sortimages/merge.gif)
+## 快速排序
+
 ## 参考
 [https://www.cnblogs.com/onepixel/p/7674659.html](https://www.cnblogs.com/onepixel/p/7674659.html)  
 

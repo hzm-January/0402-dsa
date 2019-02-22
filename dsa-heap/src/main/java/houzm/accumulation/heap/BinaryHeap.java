@@ -61,7 +61,7 @@ public class BinaryHeap {
         heap[count--] = 0;
         // 堆化（从上到下）
         int n = 1;
-        while ((2 * n) + 1 <= count) {
+        while (2 * n + 1 <= count) {
             if (heap[n] < heap[2 * n]) {
                 int temp = heap[2 * n];
                 heap[2 * n] = heap[n];
@@ -81,7 +81,37 @@ public class BinaryHeap {
     }
 
     //堆排序
-
+    public int[] sort() {
+        int[] copyHeap = new int[count + 1];
+        System.arraycopy(heap, 1, copyHeap, 1, count);
+        // 堆排序
+        int n = count;
+        while (n > 0) {
+            int temp = copyHeap[n];
+            copyHeap[n] = copyHeap[1];
+            copyHeap[1] = temp;
+            n--;
+            // 从上往下堆化
+            int m = 1;
+            while (true) {
+                int maxPos = m;
+                if (m * 2 < n && copyHeap[m] < copyHeap[m * 2]) {
+                    maxPos = m * 2;
+                }
+                if (m * 2 + 1 < n && copyHeap[maxPos] < copyHeap[m * 2 + 1]) {
+                    maxPos = m * 2 + 1;
+                }
+                if (maxPos == m) {
+                    break;
+                }
+                int tempSwap = copyHeap[maxPos];
+                copyHeap[maxPos] = copyHeap[m];
+                copyHeap[m] = tempSwap;
+                m = maxPos;
+            }
+        }
+        return copyHeap;
+    }
 
     public static void main(String[] args) {
         BinaryHeap binaryHeap = new BinaryHeap(10);
@@ -97,6 +127,9 @@ public class BinaryHeap {
         //删除堆顶
         binaryHeap.removeRoot();
         System.out.println(Arrays.toString(binaryHeap.heap));
+        int[] sort = binaryHeap.sort();
+        System.out.println("堆排序结果：" + Arrays.toString(sort));
+
 
     }
 }

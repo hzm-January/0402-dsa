@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * author: hzm_dream@163.com
  * date: 2019/2/22 11:28
- * description: 二叉堆 (大顶堆)
+ * description: 二叉堆 (大顶堆) 通俗易懂版
  */
 public class BinaryHeap {
 

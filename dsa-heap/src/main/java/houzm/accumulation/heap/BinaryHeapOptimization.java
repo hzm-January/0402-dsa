@@ -46,16 +46,21 @@ public class BinaryHeapOptimization {
     // 删除堆顶元素
     public boolean removeRoot() {
         // swap
-        swap(heap, 1, count);
-        heap[count--]=0;
-        // heapfiy
-        int n = 1;
+//        swap(heap, 1, count);
+        heap[1] = heap[count];
+        heap[count--] = 0;
+        // heapify
+        heapify(heap, 1, count);
+        return true;
+    }
+
+    private void heapify(int[] heap, int n, int max) {
         while (true) {
             int maxPos = n;
-            if (2 * n <= count && heap[n] < heap[2 * n]) {
+            if (2 * n <= max && heap[n] < heap[2 * n]) {
                 maxPos = 2 * n;
             }
-            if (2 * n + 1 <= count && heap[maxPos] < heap[2 * n + 1]) {
+            if (2 * n + 1 <= max && heap[maxPos] < heap[2 * n + 1]) {
                 maxPos = 2 * n + 1;
             }
             if (maxPos == n) {
@@ -64,7 +69,27 @@ public class BinaryHeapOptimization {
             swap(heap, n, maxPos);
             n = maxPos;
         }
-        return true;
+    }
+
+    // sort
+    public int[] sort(int[] arr) {
+        if (arr == null || arr.length == 0) {
+            return arr;
+        }
+        int[] arrCopy = new int[arr.length];
+        System.arraycopy(arr, 0, arrCopy, 0, arr.length);
+        // heapify
+        for (int i = arrCopy.length - 1 >> 2; i > 0; i--) {
+            heapify(arrCopy, i, arrCopy.length - 1);
+        }
+        // sort
+        int n = count;
+        while (n > 1) {
+            swap(arrCopy, 1, n);
+            n--;
+            heapify(arrCopy, 1, n);
+        }
+        return arrCopy;
     }
 
     /**
@@ -94,5 +119,7 @@ public class BinaryHeapOptimization {
         System.out.println(Arrays.toString(heap.heap));
         heap.removeRoot();
         System.out.println(Arrays.toString(heap.heap));
+        int[] sort = heap.sort(heap.heap);
+        System.out.println(Arrays.toString(sort));
     }
 }
